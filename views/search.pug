@@ -1,5 +1,14 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content
   .search_header
-    h3 Searching for: #{searchingBy}
+    h3 Searching for: #{searchingBy} 
+    //- form에서 입력한 값을 변수로 받아서 표시
+  .search_videos
+    each item in videos
+      +videoBlock({
+        title:item.title,
+        views:item.views,
+        videoFile:item.videoFile
+      })
